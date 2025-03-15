@@ -6,8 +6,15 @@ import Home from './components/Home';
 import Jobs from './components/Jobs';
 import Browse from './components/Browse';
 import Profile from './components/Profile';
-import AppliedJobTable from './components/AppliedJobTable';
 import JobDescription from './components/JobDescription';
+import Companies from './components/recruiter/Companies';
+import CompanyCreate from './components/recruiter/CompanyCreate';
+import CompanySetup from './components/recruiter/CompanySetup';
+import AdminJobs from './components/recruiter/AdminJobs';
+import PostJob from './components/recruiter/PostJob';
+import ProtectedRoute from './components/recruiter/ProtectedRoute';
+import Applicants from './components/recruiter/Applicants';
+import AppliedJob from './components/AppliedJob';
 
 
 const appRouter = createBrowserRouter([
@@ -41,7 +48,31 @@ const appRouter = createBrowserRouter([
   },
   {
     path: '/appliedjob',
-    element: <AppliedJobTable />,
+    element: <AppliedJob />,
+  },
+  {
+    path: '/admin/companies',
+    element: <Companies />,
+  },
+  {
+    path: '/admin/companies/create',
+    element: <CompanyCreate />,
+  },
+  {
+    path: '/admin/companies/:id',
+    element: <CompanySetup />,
+  },
+  {
+    path:"/admin/jobs",
+    element:<ProtectedRoute><AdminJobs/></ProtectedRoute> 
+  },
+  {
+    path:"/admin/jobs/create",
+    element:<ProtectedRoute><PostJob/></ProtectedRoute> 
+  },
+  {
+    path:"/admin/jobs/:id/applicants",
+    element:<ProtectedRoute><Applicants/></ProtectedRoute> 
   },
   
 ]);

@@ -10,7 +10,6 @@ import { USER_API_END_POINT } from "./utils/constants";
 import { setUser } from "@/redux/authSlice";
 import { toast } from "sonner";
 
-
 const UpdateProfileDialog = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const { user } = useSelector((store) => store.auth);
@@ -25,9 +24,8 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     phoneNumber: user?.phoneNumber,
     bio: user?.profile?.bio,
     skills: user?.profile?.skills?.map((skill) => skill),
-    location:user?.profile?.location,
+    location: user?.profile?.location,
     file: user?.profile?.resume,
-
   });
   const dispatch = useDispatch();
   const changeEventHandler = (e) => {
@@ -44,29 +42,33 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     formData.append("skills", input.skills);
     formData.append("location", input.location);
     if (input.file) {
-        formData.append("file", input.file);
+      formData.append("file", input.file);
     }
     try {
-        setLoading(true);
-        const res = await axios.post(`${USER_API_END_POINT}/update-profile`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            withCredentials: true
-        });
-        if (res.data.success) {
-            dispatch(setUser(res.data.user));
-            toast.success(res.data.message);
+      setLoading(true);
+      const res = await axios.post(
+        `${USER_API_END_POINT}/update-profile`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
         }
+      );
+      if (res.data.success) {
+        dispatch(setUser(res.data.user));
+        toast.success(res.data.message);
+      }
     } catch (error) {
-        // console.log(error);
-        toast.error(error.response.data.message);
-    } finally{
-        setLoading(false);
+      // console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
     setOpen(false);
     console.log(input);
-}
+  };
   return (
     <Dialog open={open}>
       <DialogContent
@@ -140,7 +142,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             </div>
             <div className="grid grid-cols-4 items-center gap-4 ">
               <label htmlFor="skills" className="text-right">
-              Location
+                Location
               </label>
               <Input
                 id="location"

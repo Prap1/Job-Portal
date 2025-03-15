@@ -8,7 +8,12 @@ const FilterData = [
   },
   {
     filterType: "Industry",
-    values: ["frontend developer", "Full stack developer", "Data Science", "Backend Developer",],
+    values: [
+      "frontend developer",
+      "Full stack developer",
+      "Data Science",
+      "Backend Developer",
+    ],
   },
   {
     filterType: "Salary",
@@ -19,7 +24,7 @@ const FilterData = [
 const FilterCards = () => {
   return (
     <div className=" w-full bg-white p-3 rounded-md">
-      <h1 className='font-bold text-lg'>Filter Jobs</h1>
+      <h1 className="font-bold text-lg">Filter Jobs</h1>
       <hr className="mt-3" />
       {FilterData.map((data, index) => (
         <div key={index}>
