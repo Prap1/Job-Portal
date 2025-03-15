@@ -1,14 +1,13 @@
-import React, { useState } from "react";
 import { Dialog, DialogContent, DialogFooter, DialogTitle } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { useDispatch, useSelector } from "react-redux";
-import store from "@/redux/store";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import axios from "axios";
 import { USER_API_END_POINT } from "./utils/constants";
 import { setUser } from "@/redux/authSlice";
 import { toast } from "sonner";
+import { useState } from "react";
 
 const UpdateProfileDialog = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
@@ -41,6 +40,8 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     formData.append("bio", input.bio);
     formData.append("skills", input.skills);
     formData.append("location", input.location);
+    
+
     if (input.file) {
       formData.append("file", input.file);
     }

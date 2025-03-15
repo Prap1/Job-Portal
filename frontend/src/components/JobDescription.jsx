@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { APPLY_JOB, SINGLE_JOB_GET } from "./utils/constants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import store from "@/redux/store";
 import { setSingleJob } from "@/redux/jobSlice";
 import { toast } from "sonner";
+import Navbar from "./shared/Navbar";
 
 const JobDescription = () => {
   const { singleJob } = useSelector((store) => store.job);
@@ -71,6 +71,8 @@ const JobDescription = () => {
   }, [jobId, dispatch, user?._id]);
 
   return (
+    <div>
+    <Navbar/>
     <div className="max-w-7xl mx-auto my-10">
       <div className="flex items-center justify-between">
         <div>
@@ -144,6 +146,7 @@ const JobDescription = () => {
           </span>
         </h1>
       </div>
+    </div>
     </div>
   );
 };

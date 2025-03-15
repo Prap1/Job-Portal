@@ -4,12 +4,19 @@ import { Button } from "./ui/button";
 import { Search } from "lucide-react";
 import Navbar from "./shared/Navbar";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const AppliedJobs = () => {
   // Ensure allAppliedJobs is the correct object and access the `applications` array
   const { allAppliedJobs } = useSelector((store) => store.job);
-  const jobs = allAppliedJobs?.applications || []; // Access the applications array
+  const jobs = allAppliedJobs; // Access the applications array
+   console.log(allAppliedJobs);
+   const navigate = useNavigate(); // Initialize navigate hook
 
+   const handleClick = () => {
+     // Redirect to the job page when the button is clicked
+     navigate("/jobs");
+   };
   return (
     <div>
       <Navbar />
@@ -25,7 +32,7 @@ const AppliedJobs = () => {
               className="border rounded-md p-2"
             />
           </div>
-          <Button variant="outline" className="bg-blue-600 hover:bg-blue-500">
+          <Button onClick={handleClick} variant="outline" className="bg-blue-600 hover:bg-blue-500">
             Apply for New Job
           </Button>
         </div>

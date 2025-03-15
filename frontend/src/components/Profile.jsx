@@ -11,9 +11,9 @@ import {
 } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Label } from "./ui/label";
-import AppliedJobTable from "./AppliedJobTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 // const skills = ["Html", "Css", "Javascript", "Reactjs"]
 const isResume = true;
